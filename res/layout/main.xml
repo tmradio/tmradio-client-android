@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/upperMenu"
+        android:layout_width="fill_parent"
+        android:layout_height="65dp"
+        android:longClickable="false" >
+
+        <ImageButton
+            android:id="@+id/imageButtonChat"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/ic_menu_comment"
+            android:visibility="invisible" />
+
+        <ImageButton
+            android:id="@+id/imageButtonLogs"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/ic_menu_show_list"
+            android:visibility="invisible" />
+
+        <ImageButton
+            android:id="@+id/imageButtonSettings"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/ic_menu_answer_call"
+            android:onClick="callToTmradio" />
+
+        <ImageButton
+            android:id="@+id/imageButtonRocks"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/ic_menu_favorite_add_youtube" 
+            android:onClick="voteRocks" />
+
+        <ImageButton
+            android:id="@+id/imageButtonSucks"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/ic_menu_favorite_remove_youtube"
+            android:onClick="voteSucks" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayoutSong"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textViewArtist"
+            android:layout_width="fill_parent"
+            android:layout_weight="1"
+            android:textAppearance="?android:attr/textAppearanceLarge" android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/textViewSong"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <LinearLayout
+            android:id="@+id/linearLayoutStatistics"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center" >
+
+            <TextView
+                android:id="@+id/textViewSongId"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <TextView
+                android:id="@+id/textViewPopularity"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <TextView
+                android:id="@+id/textViewLength"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/bottomMenu"
+        android:layout_width="fill_parent"
+        android:layout_height="65dp" >
+
+        <ImageButton
+            android:id="@+id/imageButtonPlayStop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_menu_play_clip" />
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="net.tmradio.client"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk android:minSdkVersion="8" />
+    
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    
+    <application
+        android:icon="@drawable/icon"
+        android:label="@string/app_name" >
+        <activity
+            android:launchMode="singleTask"
+            android:name=".TmradioActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.media.AUDIO_SHUT_UP" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.media.AUDIO_META_UPDATED" />
+            </intent-filter>
+        </activity>
+        
+        <activity android:name=".ConfigActivity"></activity>
+        
+        <service android:enabled="true" android:name=".PlayerService"></service>
+        <service android:enabled="true" android:name=".VotingService"></service>
+        <service android:enabled="true" android:name=".MetaUpdateService">
+            <intent-filter >
+                <action android:name="android.media.UPDATE_META" />
+            </intent-filter>
+        </service>        
+        
+		<receiver android:name=".MusicIntentReceiver">
+		   <intent-filter>
+		      <action android:name="android.media.AUDIO_BECOMING_NOISY" />
+		   </intent-filter>
+		   <intent-filter>
+		      <action android:name="android.media.META_UPDATED" />
+		   </intent-filter>
+		</receiver>
+    </application>   
+</manifest>

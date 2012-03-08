@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">tmradio.net client</string>
+    <string name="tmradio_stream_url">http://stream.tmradio.net:8180/live.mp3</string>
+    <string name="tmradio_meta_url">http://music.tmradio.net/api/status.json</string>
+    <string name="options_settings">Settings</string>
+</resources>

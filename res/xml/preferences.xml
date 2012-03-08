@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+  <PreferenceCategory android:title="Tmradio account settings"
+ 					  android:summary="Configuration of account at tmradio.com.">
+	  <EditTextPreference android:title="Authentication token"
+	                      android:key="auth_token"
+	                      android:summary="Please provide your auhtentication token generated at tmradio"
+	                      android:id="@+id/auth_token"></EditTextPreference>
+  </PreferenceCategory>
+</PreferenceScreen>
