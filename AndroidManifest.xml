@@ -9,6 +9,8 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.CALL_PRIVILEGED" />
     
     <application
         android:icon="@drawable/icon"
@@ -26,6 +28,16 @@
             <intent-filter>
                 <action android:name="android.media.AUDIO_META_UPDATED" />
             </intent-filter>
+	        <intent-filter>
+	            <action android:name="android.intent.action.VIEW" />
+	            <category android:name="android.intent.category.DEFAULT" />
+	            <data android:scheme="skype" />
+	        </intent-filter>            
+			<intent-filter android:priority="0">
+	            <action android:name="android.intent.action.CALL_PRIVILEGED" />
+	            <category android:name="android.intent.category.DEFAULT" />
+	            <data android:scheme="tel" />
+	        </intent-filter>	        
         </activity>
         
         <activity android:name=".ConfigActivity"></activity>

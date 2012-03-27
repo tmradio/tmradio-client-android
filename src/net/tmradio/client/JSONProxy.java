@@ -53,8 +53,10 @@ public class JSONProxy
 		        httppost.setEntity(new UrlEncodedFormEntity(params));
 		        
 		        HttpResponse res = httpclient.execute(httppost);
+		        Log.v("Tmradio", "HttpResponse "+res);
 		        HttpEntity entity = res.getEntity();
 		        is = entity.getContent();
+		        Log.v("Tmradio", "is "+is);
 		    }
 			catch(Exception e)
 		    {

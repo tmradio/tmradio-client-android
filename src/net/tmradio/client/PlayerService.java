@@ -109,16 +109,22 @@ public class PlayerService extends Service implements AudioManager.OnAudioFocusC
 	            break;
 
 	        case AudioManager.AUDIOFOCUS_LOSS_TRANSIENT:
-	            // Lost focus for a short time, but we have to stop
-	            // playback. We don't release the media player because playback
-	            // is likely to resume
-	            if (mp.isPlaying()) mp.pause();
+	        	if(mp != null)
+	        	{
+		            // Lost focus for a short time, but we have to stop
+		            // playback. We don't release the media player because playback
+		            // is likely to resume
+	        		if (mp.isPlaying()) mp.pause();
+	        	}
 	            break;
 
 	        case AudioManager.AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK:
-	            // Lost focus for a short time, but it's ok to keep playing
-	            // at an attenuated level
-	            if (mp.isPlaying()) mp.setVolume(0.1f, 0.1f);
+	        	if(mp != null)
+	        	{
+		            // Lost focus for a short time, but it's ok to keep playing
+		            // at an attenuated level
+	        		if (mp.isPlaying()) mp.setVolume(0.1f, 0.1f);
+	        	}
 	            break;
 	    }
 	}

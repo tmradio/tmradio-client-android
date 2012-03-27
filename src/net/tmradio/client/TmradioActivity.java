@@ -1,16 +1,20 @@
 package net.tmradio.client;
 
+import java.util.List;
+
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -37,6 +41,12 @@ public class TmradioActivity extends Activity
 	
 	public final static String PLAYER_STATUS = "rotation_player_status";
 	private boolean is_player_works;
+	
+	private static final String SKYPE_PATH_GENERAL = "com.skype.raider";
+	private static final String SKYPE_PATH_OLD = "com.skype.raider.contactsync.ContactSkypeOutCallStartActivity";
+	private static final String SKYPE_PATH_NEW = "com.skype.raider.Main";	
+	private static final String SKYPE_TMRADIO_NUMBER = "tmradio.net";
+	private static final String PHONE_TMRADIO_NUMBER = "79117003831";
 	
     @Override
     public void onCreate(Bundle savedInstanceState) 
@@ -183,21 +193,26 @@ public class TmradioActivity extends Activity
 	
 	public void callToTmradio(View v)
 	{
-		//phone:7 911 700 3831
-		//skype:tmradio.net
-		final CharSequence[] items = {"Skype", "Phone", "Cancel"};
+		Context context = getApplicationContext();
+		Intent skypeIntent = new Intent().setAction("android.intent.action.CALL_PRIVILEGED");
 
-		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		builder.setTitle("How do you want to call to Tmradio?");
-		builder.setItems(items, new DialogInterface.OnClickListener() 
+		skypeIntent.addCategory("android.intent.category.DEFAULT");
+		skypeIntent.setData(Uri.parse("tel:" + SKYPE_TMRADIO_NUMBER));
+
+		if (isIntentAvailable(context, skypeIntent.setClassName(SKYPE_PATH_GENERAL, SKYPE_PATH_NEW))) 
 		{
-		    public void onClick(DialogInterface dialog, int item) 
-		    {
-		        Toast.makeText(getApplicationContext(), items[item], Toast.LENGTH_SHORT).show();
-		    }
-		});
-		AlertDialog alert = builder.create();	
-		alert.show();
+		    startActivity(skypeIntent);
+		} 
+		else if (isIntentAvailable(context, skypeIntent.setClassName(SKYPE_PATH_GENERAL, SKYPE_PATH_OLD))) 
+		{
+		    startActivity(skypeIntent);
+		} 
+		else 
+		{
+	        Intent callIntent = new Intent(Intent.ACTION_CALL);
+	        callIntent.setData(Uri.parse("tel:"+PHONE_TMRADIO_NUMBER));
+	        startActivity(callIntent);
+		}
 	}
 	
 	public void voteRocks(View v)
@@ -237,5 +252,12 @@ public class TmradioActivity extends Activity
 		
 		playStopButton.setImageResource(R.drawable.ic_menu_play_clip);
 		is_player_works = false;
+	}
+	
+	private static boolean isIntentAvailable(Context context, Intent intent) {
+	    final PackageManager packageManager = context.getPackageManager();
+	    List<ResolveInfo> list = packageManager.queryIntentActivities(
+	        intent, PackageManager.MATCH_DEFAULT_ONLY);
+	    return list.size() > 0;
 	}
 }
