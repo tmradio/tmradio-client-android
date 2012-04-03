@@ -12,7 +12,7 @@ import android.os.IBinder;
 
 public class MetaUpdateService extends Service {
     private Handler mHandler = new Handler();
-    public static final int FIVE_SECONDS = 5000;
+    public static final int UPDATE_PERIOD = 5000;
     public final static String ACTION_UPDATED = "android.media.META_UPDATED";
     
     private Runnable periodicTask = new Runnable() 
@@ -45,7 +45,7 @@ public class MetaUpdateService extends Service {
      	  
       	    sendBroadcast(result);
       	    
-            mHandler.postDelayed(periodicTask, FIVE_SECONDS);
+            mHandler.postDelayed(periodicTask, UPDATE_PERIOD);
         }
     };
  
@@ -58,7 +58,7 @@ public class MetaUpdateService extends Service {
     @Override
     public void onCreate() 
     {
-        mHandler.postDelayed(periodicTask, FIVE_SECONDS);
+        mHandler.postDelayed(periodicTask, UPDATE_PERIOD);
     }
 
     @Override

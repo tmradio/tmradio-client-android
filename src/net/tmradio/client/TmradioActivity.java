@@ -14,7 +14,6 @@ import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.IBinder;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -189,6 +188,11 @@ public class TmradioActivity extends Activity
 	public void showSettings()
 	{
 		startActivity(new Intent(this, ConfigActivity.class));
+	}
+	
+	public void showChat(View v)
+	{
+		startActivity(new Intent(this, ChatActivity.class));
 	}
 	
 	public void callToTmradio(View v)

@@ -20,7 +20,8 @@ public class ConfigActivity extends PreferenceActivity
     	SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
     	
     	String tmradio_token = preferences.getString("auth_token", null);
+    	String nickname = preferences.getString("nickname", "Guest");
 	    
-	    return new String[] {tmradio_token};
+	    return new String[] {tmradio_token, nickname};
     }
 }

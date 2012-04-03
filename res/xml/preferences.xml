@@ -4,7 +4,15 @@
  					  android:summary="Configuration of account at tmradio.com.">
 	  <EditTextPreference android:title="Authentication token"
 	                      android:key="auth_token"
-	                      android:summary="Please provide your auhtentication token generated at tmradio"
+	                      android:summary="Please provide your authentication token generated at tmradio"
 	                      android:id="@+id/auth_token"></EditTextPreference>
+  </PreferenceCategory>
+  
+  <PreferenceCategory android:title="Chat settings"
+ 					  android:summary="Configuration of chat client.">
+	  <EditTextPreference android:title="Nickname"
+	                      android:key="nickname"
+	                      android:summary="This name will be used in chat."
+	                      android:id="@+id/nickname"></EditTextPreference>
   </PreferenceCategory>
 </PreferenceScreen>

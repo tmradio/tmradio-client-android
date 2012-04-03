@@ -39,16 +39,15 @@
 	            <data android:scheme="tel" />
 	        </intent-filter>	        
         </activity>
-        
+
+        <activity android:launchMode="singleTask" android:name=".ChatActivity" ></activity>
         <activity android:name=".ConfigActivity"></activity>
         
         <service android:enabled="true" android:name=".PlayerService"></service>
         <service android:enabled="true" android:name=".VotingService"></service>
-        <service android:enabled="true" android:name=".MetaUpdateService">
-            <intent-filter >
-                <action android:name="android.media.UPDATE_META" />
-            </intent-filter>
-        </service>        
+        <service android:enabled="true" android:name=".ChatMessageSendingService"></service>
+        <service android:enabled="true" android:name=".MetaUpdateService"></service>        
+        <service android:enabled="true" android:name=".ChatUpdateService"></service>        
         
 		<receiver android:name=".MusicIntentReceiver">
 		   <intent-filter>

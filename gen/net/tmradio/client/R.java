@@ -25,26 +25,32 @@ public final class R {
         public static final int icon=0x7f02000b;
     }
     public static final class id {
-        public static final int auth_token=0x7f07000f;
-        public static final int bottomMenu=0x7f07000d;
-        public static final int imageButtonChat=0x7f070001;
-        public static final int imageButtonLogs=0x7f070002;
-        public static final int imageButtonPlayStop=0x7f07000e;
-        public static final int imageButtonRocks=0x7f070004;
-        public static final int imageButtonSettings=0x7f070003;
-        public static final int imageButtonSucks=0x7f070005;
-        public static final int linearLayoutSong=0x7f070006;
-        public static final int linearLayoutStatistics=0x7f070009;
-        public static final int settings=0x7f070010;
-        public static final int textViewArtist=0x7f070007;
-        public static final int textViewLength=0x7f07000c;
-        public static final int textViewPopularity=0x7f07000b;
-        public static final int textViewSong=0x7f070008;
-        public static final int textViewSongId=0x7f07000a;
-        public static final int upperMenu=0x7f070000;
+        public static final int auth_token=0x7f070013;
+        public static final int bottomLayout=0x7f070001;
+        public static final int bottomMenu=0x7f070011;
+        public static final int imageButtonChat=0x7f070005;
+        public static final int imageButtonLogs=0x7f070006;
+        public static final int imageButtonPlayStop=0x7f070012;
+        public static final int imageButtonRocks=0x7f070008;
+        public static final int imageButtonSettings=0x7f070007;
+        public static final int imageButtonSucks=0x7f070009;
+        public static final int linearLayoutMessages=0x7f070000;
+        public static final int linearLayoutSong=0x7f07000a;
+        public static final int linearLayoutStatistics=0x7f07000d;
+        public static final int messageEdit=0x7f070002;
+        public static final int nickname=0x7f070014;
+        public static final int sendButton=0x7f070003;
+        public static final int settings=0x7f070015;
+        public static final int textViewArtist=0x7f07000b;
+        public static final int textViewLength=0x7f070010;
+        public static final int textViewPopularity=0x7f07000f;
+        public static final int textViewSong=0x7f07000c;
+        public static final int textViewSongId=0x7f07000e;
+        public static final int upperMenu=0x7f070004;
     }
     public static final class layout {
-        public static final int main=0x7f030000;
+        public static final int chat=0x7f030000;
+        public static final int main=0x7f030001;
     }
     public static final class menu {
         public static final int main_menu=0x7f060000;

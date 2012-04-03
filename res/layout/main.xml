@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:src="@drawable/ic_menu_comment"
-            android:visibility="invisible" />
+            android:onClick="showChat" />
 
         <ImageButton
             android:id="@+id/imageButtonLogs"
@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:src="@drawable/ic_menu_show_list"
-            android:visibility="invisible" />
+            android:visibility="invisible"  />
 
         <ImageButton
             android:id="@+id/imageButtonSettings"
