@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Тоже мне клиент</string>
+    <string name="tmradio_stream_url">http://stream.tmradio.net:8180/live.mp3</string>
+    <string name="tmradio_meta_url">http://music.tmradio.net/api/status.json</string>
+    <string name="tmradio_chat_server_url">http://ekis2.ikito.ru:8080</string>
+    <string name="options_settings">Настройки</string>
+    <string name="voted_plus">Вы проголосовали за эту песню!</string>
+    <string name="voted_minus">Вы проголосовали против этой песни!</string>
+    <string name="account_settings">Настройки Tmradio</string>
+    <string name="account_settings_summary">Конфигурация аккаунта на tmradio.net</string>
+    <string name="auth_token">Ключик</string>
+    <string name="auth_token_summary">Ключ сгенерированый на tmradio</string>
+    <string name="chat_settings">Настройки чата</string>
+    <string name="chat_settings_summary">Конфигурация чата в клиенте tmradio.net</string>
+    <string name="nick">Имя</string>
+    <string name="nick_summary">Этим именем будут отображаться ваши сообщения в чате.</string>
+</resources>

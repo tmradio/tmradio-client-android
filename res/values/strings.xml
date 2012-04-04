@@ -7,4 +7,12 @@
     <string name="options_settings">Settings</string>
     <string name="voted_plus">You voted for song!</string>
     <string name="voted_minus">You voted against this song!</string>
+    <string name="account_settings">Tmradio account settings</string>
+    <string name="account_settings_summary">Configuration of account at tmradio.net</string>
+    <string name="auth_token">Authentication token</string>
+    <string name="auth_token_summary">Please provide your authentication token generated at tmradio</string>
+    <string name="chat_settings">Chat settings</string>
+    <string name="chat_settings_summary">Configuration of chat client.</string>
+    <string name="nick">Nickname</string>
+    <string name="nick_summary">This name will be used in chat.</string>
 </resources>

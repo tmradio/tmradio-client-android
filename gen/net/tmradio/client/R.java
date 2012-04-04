@@ -56,7 +56,15 @@ public final class R {
         public static final int main_menu=0x7f060000;
     }
     public static final class string {
+        public static final int account_settings=0x7f050007;
+        public static final int account_settings_summary=0x7f050008;
         public static final int app_name=0x7f050000;
+        public static final int auth_token=0x7f050009;
+        public static final int auth_token_summary=0x7f05000a;
+        public static final int chat_settings=0x7f05000b;
+        public static final int chat_settings_summary=0x7f05000c;
+        public static final int nick=0x7f05000d;
+        public static final int nick_summary=0x7f05000e;
         public static final int options_settings=0x7f050004;
         public static final int tmradio_chat_server_url=0x7f050003;
         public static final int tmradio_meta_url=0x7f050002;
