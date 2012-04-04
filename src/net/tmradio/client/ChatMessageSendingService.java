@@ -17,9 +17,9 @@ public class ChatMessageSendingService extends Service
 		super.onStart(intent, startId);
 		
 		Bundle b = intent.getExtras();
-		String url = b.getString("url");
-		String nick = b.getString("nick");
-		String text = b.getString("text");
+		String url = b.getString(ChatActivity.INTENT_CMSS_URL);
+		String nick = b.getString(ChatActivity.INTENT_CMSS_NICK);
+		String text = b.getString(ChatActivity.INTENT_CMSS_TEXT);
 		
 		send_message(url, nick, text);
 	}

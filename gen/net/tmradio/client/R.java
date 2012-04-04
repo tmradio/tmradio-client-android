@@ -57,9 +57,12 @@ public final class R {
     }
     public static final class string {
         public static final int app_name=0x7f050000;
-        public static final int options_settings=0x7f050003;
+        public static final int options_settings=0x7f050004;
+        public static final int tmradio_chat_server_url=0x7f050003;
         public static final int tmradio_meta_url=0x7f050002;
         public static final int tmradio_stream_url=0x7f050001;
+        public static final int voted_minus=0x7f050006;
+        public static final int voted_plus=0x7f050005;
     }
     public static final class xml {
         public static final int preferences=0x7f040000;

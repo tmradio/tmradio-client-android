@@ -16,8 +16,8 @@ public class VotingService extends Service
 	public final static HashMap<String, String> vote_mapping = new HashMap<String, String>();
 	static
  	{
-		vote_mapping.put("rocks", "http://music.tmradio.net/api/track/rocks.json");
-		vote_mapping.put("sucks", "http://music.tmradio.net/api/track/sucks.json");
+		vote_mapping.put(TmradioActivity.VOTING_PLUS, "http://music.tmradio.net/api/track/rocks.json");
+		vote_mapping.put(TmradioActivity.VOTING_MINUS, "http://music.tmradio.net/api/track/sucks.json");
  	}
 	
 	@Override
@@ -29,8 +29,8 @@ public class VotingService extends Service
 		String auth_token = config.preferences(getApplicationContext())[0]; 
 
 		Bundle b = intent.getExtras();
-		String vote = b.getString("vote");
-		String track_id = b.getString("track_id");
+		String vote = b.getString(TmradioActivity.INTENT_VOTING_VOTE);
+		String track_id = b.getString(TmradioActivity.INTENT_VOTING_TRACK);
 		
 		if(vote_mapping.containsKey(vote) && auth_token != null && auth_token.length() > 0)
 		{

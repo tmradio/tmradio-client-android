@@ -3,5 +3,8 @@
     <string name="app_name">tmradio.net client</string>
     <string name="tmradio_stream_url">http://stream.tmradio.net:8180/live.mp3</string>
     <string name="tmradio_meta_url">http://music.tmradio.net/api/status.json</string>
+    <string name="tmradio_chat_server_url">http://ekis2.ikito.ru:8080</string>
     <string name="options_settings">Settings</string>
+    <string name="voted_plus">You voted for song!</string>
+    <string name="voted_minus">You voted against this song!</string>
 </resources>

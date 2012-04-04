@@ -15,6 +15,12 @@ public class MetaUpdateService extends Service {
     public static final int UPDATE_PERIOD = 5000;
     public final static String ACTION_UPDATED = "android.media.META_UPDATED";
     
+    public static final String INTENT_UPDATED_ID = "id";
+    public static final String INTENT_UPDATED_LENGTH = "length";
+    public static final String INTENT_UPDATED_POPULARITY = "popularity";
+    public static final String INTENT_UPDATED_ARTIST = "artist";
+    public static final String INTENT_UPDATED_SONG = "song";
+    
     private Runnable periodicTask = new Runnable() 
     {
         public void run() 
@@ -28,19 +34,19 @@ public class MetaUpdateService extends Service {
     			int length = json.getInt("length");
     			String time_length = String.valueOf(length/60) + ":" + String.valueOf(length%60); 
     			
-    			result.putExtra("id", json.getInt("id"));
-    			result.putExtra("length", time_length);
-    			result.putExtra("popularity", String.format("%.2f", (float)json.getDouble("weight")));
-    			result.putExtra("artist", json.getString("artist"));
-    			result.putExtra("song", json.getString("title"));
+    			result.putExtra(INTENT_UPDATED_ID, json.getInt("id"));
+    			result.putExtra(INTENT_UPDATED_LENGTH, time_length);
+    			result.putExtra(INTENT_UPDATED_POPULARITY, String.format("%.2f", (float)json.getDouble("weight")));
+    			result.putExtra(INTENT_UPDATED_ARTIST, json.getString("artist"));
+    			result.putExtra(INTENT_UPDATED_SONG, json.getString("title"));
     		} 
     		catch (JSONException e) 
     		{
-    			result.putExtra("id", "");
-    			result.putExtra("played", "");
-    			result.putExtra("popularity", "");
-    			result.putExtra("artist", "");
-    			result.putExtra("song", "");
+    			result.putExtra(INTENT_UPDATED_ID, "");
+    			result.putExtra(INTENT_UPDATED_LENGTH, "");
+    			result.putExtra(INTENT_UPDATED_POPULARITY, "");
+    			result.putExtra(INTENT_UPDATED_ARTIST, "");
+    			result.putExtra(INTENT_UPDATED_SONG, "");
     		}
      	  
       	    sendBroadcast(result);

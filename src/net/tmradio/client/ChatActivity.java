@@ -25,8 +25,11 @@ public class ChatActivity extends Activity
 	private EditText messageEdit;
 	private LinearLayout chatMessages;
 	
-	public final static String TMRADIO_CHAT_SERVER_ADDRESS = "http://ekis2.ikito.ru:8080";
 	ArrayList<String> messageIds = new ArrayList<String>();
+	
+	public final static String INTENT_CMSS_URL = "url";
+	public final static String INTENT_CMSS_NICK = "nick";
+	public final static String INTENT_CMSS_TEXT = "text";
 	
     @Override
     public void onCreate(Bundle savedInstanceState) 
@@ -37,7 +40,6 @@ public class ChatActivity extends Activity
         // event listener creation and registration
         activityReceiver = new MainActivityReceiver();
         
-        // stream meta updated event
         chatUpdateFilter = new IntentFilter(ChatUpdateService.ACTION_UPDATED);
         getApplicationContext().registerReceiver(activityReceiver, chatUpdateFilter);
         
@@ -57,9 +59,9 @@ public class ChatActivity extends Activity
 			String nickname = config.preferences(getApplicationContext())[1]; 
 			
 			Intent i = new Intent(this, ChatMessageSendingService.class);
-			i.putExtra("url", TMRADIO_CHAT_SERVER_ADDRESS);
-			i.putExtra("nick", nickname);
-			i.putExtra("text", text);
+			i.putExtra(INTENT_CMSS_URL, getString(R.string.tmradio_chat_server_url));
+			i.putExtra(INTENT_CMSS_NICK, nickname);
+			i.putExtra(INTENT_CMSS_TEXT, text);
 			
 			startService(i);
 		}
@@ -79,7 +81,7 @@ public class ChatActivity extends Activity
 				
 				try
 				{
-					JSONObject json = new JSONObject(b.getString("json"));
+					JSONObject json = new JSONObject(b.getString(ChatUpdateService.INTENT_UPDATED_JSON));
 					data = json.getJSONArray("data");
 					
 					LinearLayout.LayoutParams llp = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);

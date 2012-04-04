@@ -46,6 +46,15 @@ public class TmradioActivity extends Activity
 	private static final String SKYPE_PATH_NEW = "com.skype.raider.Main";	
 	private static final String SKYPE_TMRADIO_NUMBER = "tmradio.net";
 	private static final String PHONE_TMRADIO_NUMBER = "79117003831";
+	private static final String SKYPE_INTENT_ACTION = "android.intent.action.CALL_PRIVILEGED";
+	private static final String SKYPE_INTENT_CATEGORY = "android.intent.category.DEFAULT";
+	
+	public static final String INTENT_VOTING_VOTE = "vote";
+	public static final String INTENT_VOTING_TRACK = "track_id";
+	public static final String VOTING_PLUS = "rocks";
+	public static final String VOTING_MINUS = "sucks";
+	
+	public static final String DEFAULT_TRACK_NUMBER = "0";
 	
     @Override
     public void onCreate(Bundle savedInstanceState) 
@@ -63,7 +72,7 @@ public class TmradioActivity extends Activity
         activityReceiver = new MainActivityReceiver();        
         
         // headphones plugout event
-        shutUpFilter = new IntentFilter("android.media.AUDIO_SHUT_UP");
+        shutUpFilter = new IntentFilter(MusicIntentReceiver.INTENT_AUDIO_SHUT_UP);
         getApplicationContext().registerReceiver(activityReceiver, shutUpFilter);
         
         // stream meta updated event
@@ -101,7 +110,7 @@ public class TmradioActivity extends Activity
         });
         
         // For case of vote before first meta update. 
-        current_song_id = "0";
+        current_song_id = DEFAULT_TRACK_NUMBER;
     }
     
     @Override
@@ -162,19 +171,19 @@ public class TmradioActivity extends Activity
 	    @Override
 	    public void onReceive(Context context, Intent i) 
 	    {
-			if(i.getAction().equals("android.media.AUDIO_SHUT_UP"))
+			if(i.getAction().equals(MusicIntentReceiver.INTENT_AUDIO_SHUT_UP))
 			{
 	    		stopPlayer();
 			}
 			else if (i.getAction().equals(MetaUpdateService.ACTION_UPDATED)) 
 			{
 				Bundle b = i.getExtras();
-				artist.setText(b.getString("artist"));
-				song_title.setText(b.getString("song"));
-				song_id.setText("# "+String.valueOf(b.getInt("id")));
-				current_song_id = String.valueOf(b.getInt("id"));
-				song_length.setText(b.getString("length"));
-				popularity.setText(String.valueOf(b.getString("popularity")));
+				artist.setText(b.getString(MetaUpdateService.INTENT_UPDATED_ARTIST));
+				song_title.setText(b.getString(MetaUpdateService.INTENT_UPDATED_SONG));
+				song_id.setText("# "+String.valueOf(b.getInt(MetaUpdateService.INTENT_UPDATED_ID)));
+				current_song_id = String.valueOf(b.getInt(MetaUpdateService.INTENT_UPDATED_ID));
+				song_length.setText(b.getString(MetaUpdateService.INTENT_UPDATED_LENGTH));
+				popularity.setText(String.valueOf(b.getString(MetaUpdateService.INTENT_UPDATED_POPULARITY)));
 			}
 	    }
 	}
@@ -198,9 +207,9 @@ public class TmradioActivity extends Activity
 	public void callToTmradio(View v)
 	{
 		Context context = getApplicationContext();
-		Intent skypeIntent = new Intent().setAction("android.intent.action.CALL_PRIVILEGED");
+		Intent skypeIntent = new Intent().setAction(SKYPE_INTENT_ACTION);
 
-		skypeIntent.addCategory("android.intent.category.DEFAULT");
+		skypeIntent.addCategory(SKYPE_INTENT_CATEGORY);
 		skypeIntent.setData(Uri.parse("tel:" + SKYPE_TMRADIO_NUMBER));
 
 		if (isIntentAvailable(context, skypeIntent.setClassName(SKYPE_PATH_GENERAL, SKYPE_PATH_NEW))) 
@@ -221,23 +230,23 @@ public class TmradioActivity extends Activity
 	
 	public void voteRocks(View v)
 	{
-		vote("rocks");
+		vote(VOTING_PLUS);
 		
-		Toast.makeText(getApplicationContext(), "You voted for song!", Toast.LENGTH_SHORT).show();
+		Toast.makeText(getApplicationContext(), getString(R.string.voted_plus), Toast.LENGTH_SHORT).show();
 	}
 
 	public void voteSucks(View v)
 	{
-		vote("sucks");
+		vote(VOTING_MINUS);
 		
-		Toast.makeText(getApplicationContext(), "You voted against this song!", Toast.LENGTH_SHORT).show();
+		Toast.makeText(getApplicationContext(), getString(R.string.voted_minus), Toast.LENGTH_SHORT).show();
 	}
 	
 	private void vote(String vote)
 	{
 		Intent i = new Intent(this, VotingService.class);
-		i.putExtra("vote", vote);
-		i.putExtra("track_id", current_song_id);
+		i.putExtra(INTENT_VOTING_VOTE, vote);
+		i.putExtra(INTENT_VOTING_TRACK, current_song_id);
 		
 		startService(i);
 	}
