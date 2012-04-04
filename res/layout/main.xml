@@ -58,46 +58,61 @@
         android:layout_height="wrap_content"
         android:layout_weight="1" android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/textViewArtist"
+        <LinearLayout
             android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textAppearance="?android:attr/textAppearanceLarge" android:layout_height="wrap_content"/>
-
+            android:gravity="bottom" 
+            android:layout_marginBottom="10dp" >
+        
+	        <TextView
+	            android:id="@+id/textViewArtist"
+	            android:layout_width="fill_parent"
+	            android:layout_weight="1"
+	            android:textAppearance="?android:attr/textAppearanceLarge" 
+	            android:layout_height="wrap_content"
+	            android:gravity="center_horizontal"/>
+		</LinearLayout>
+	        
         <TextView
             android:id="@+id/textViewSong"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:layout_weight="0"
+            android:textAppearance="?android:attr/textAppearanceLarge" 
+            android:gravity="center_horizontal" />
 
         <LinearLayout
             android:id="@+id/linearLayoutStatistics"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="center" >
+            android:gravity="top" 
+            android:layout_marginTop="30dp" >
 
             <TextView
                 android:id="@+id/textViewSongId"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:textAppearance="?android:attr/textAppearanceMedium" 
+                android:gravity="center_horizontal" />
 
             <TextView
                 android:id="@+id/textViewPopularity"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:textAppearance="?android:attr/textAppearanceMedium" 
+                android:gravity="center_horizontal" />
 
             <TextView
                 android:id="@+id/textViewLength"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:textAppearance="?android:attr/textAppearanceMedium" 
+                android:gravity="center_horizontal" />
         </LinearLayout>
     </LinearLayout>
 
