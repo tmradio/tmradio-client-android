@@ -41,7 +41,7 @@ public class ChatMessageSendingService extends Service
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		url += "/ajax/send/?nick="+nick+"&text="+text;
+		url += "/chat/post?nick="+nick+"&text="+text;
         
 		JSONProxy.getJSONfromURL(url, "get", new ArrayList<NameValuePair>(2));
 	}

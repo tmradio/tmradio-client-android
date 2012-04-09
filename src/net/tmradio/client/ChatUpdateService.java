@@ -21,7 +21,7 @@ public class ChatUpdateService extends Service
     {
         public void run() 
         {
-        	String url = getString(R.string.tmradio_chat_server_url) + "/ajax/getChatMessages/1?format=json"; 
+        	String url = getString(R.string.tmradio_chat_server_url) + "/chat/get?format=json"; 
     		JSONObject json = JSONProxy.getJSONfromURL(url, "get", new ArrayList<NameValuePair>(2));
     		
     		Intent result = new Intent();

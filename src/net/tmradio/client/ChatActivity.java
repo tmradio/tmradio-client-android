@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -24,6 +25,7 @@ public class ChatActivity extends Activity
 	
 	private EditText messageEdit;
 	private LinearLayout chatMessages;
+	private ScrollView scrollView;
 	
 	ArrayList<String> messageIds = new ArrayList<String>();
 	
@@ -45,7 +47,16 @@ public class ChatActivity extends Activity
         
         messageEdit = (EditText)findViewById(R.id.messageEdit);
         chatMessages = (LinearLayout)findViewById(R.id.linearLayoutMessages);
-        
+        scrollView = (ScrollView)findViewById(R.id.scrollView); 
+/*        
+        scrollView.post(new Runnable() 
+        {
+            public void run() 
+            {
+            	scrollView.fullScroll(ScrollView.FOCUS_DOWN);
+            }
+        });        
+*/        
         startService(new Intent(this, ChatUpdateService.class));
     }
     
@@ -104,7 +115,9 @@ public class ChatActivity extends Activity
 					        
 						    messageIds.add(id);
 					    }
-					}					
+					}	
+					
+					scrollView.fullScroll(ScrollView.FOCUS_DOWN);
 				} 
 				catch (JSONException e)
 				{
