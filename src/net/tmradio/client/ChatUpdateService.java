@@ -13,7 +13,7 @@ import android.os.IBinder;
 public class ChatUpdateService extends Service
 {
     private Handler mHandler = new Handler();
-    public static final int UPDATE_PERIOD = 7000;
+    public static final int UPDATE_PERIOD = 2000;
 	public final static String ACTION_UPDATED = "android.media.CHAT_UPDATED";
 	public final static String INTENT_UPDATED_JSON = "json";
 

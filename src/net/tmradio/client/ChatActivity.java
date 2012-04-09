@@ -48,15 +48,7 @@ public class ChatActivity extends Activity
         messageEdit = (EditText)findViewById(R.id.messageEdit);
         chatMessages = (LinearLayout)findViewById(R.id.linearLayoutMessages);
         scrollView = (ScrollView)findViewById(R.id.scrollView); 
-/*        
-        scrollView.post(new Runnable() 
-        {
-            public void run() 
-            {
-            	scrollView.fullScroll(ScrollView.FOCUS_DOWN);
-            }
-        });        
-*/        
+
         startService(new Intent(this, ChatUpdateService.class));
     }
     
